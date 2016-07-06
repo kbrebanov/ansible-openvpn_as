@@ -1,0 +1,75 @@
+{
+  "Default": {
+    "admin_ui.https.ip_address": "{{ openvpn_as_admin_ui_https_ip_address }}",
+    "admin_ui.https.port": "{{ openvpn_as_admin_ui_https_port }}",
+    "auth.ldap.0.name": "My LDAP servers",
+    "auth.ldap.0.ssl_verify": "never",
+    "auth.ldap.0.timeout": "4",
+    "auth.ldap.0.use_ssl": "never",
+    "auth.module.type": "{{ openvpn_as_auth_module_type }}",
+    "auth.pam.0.service": "openvpnas",
+    "auth.radius.0.acct_enable": "false",
+    "auth.radius.0.name": "My Radius servers",
+{% if openvpn_as_cs_cws_proto_v2 %}
+    "cs.cws_proto_v2": "true",
+{% else %}
+    "cs.cws_proto_v2": "false",
+{% endif %}
+    "cs.https.ip_address": "{{ openvpn_as_cs_https_ip_address }}",
+    "cs.https.port": "{{ openvpn_as_cs_https_port }}",
+{% if openvpn_as_cs_prof_sign_web %}
+    "cs.prof_sign_web": "true",
+{% else %}
+    "cs.prof_sign_web": "false",
+{% endif %}
+    "cs.ssl_method": "{{ openvpn_as_cs_ssl_method }}",
+    "cs.tls_version_min": "{{ openvpn_as_cs_tls_version_min }}",
+    "host.name": "{{ openvpn_as_host_name }}",
+    "sa.initial_run_groups.0": "web_group",
+    "sa.initial_run_groups.1": "openvpn_group",
+{% if openvpn_as_vpn_client_routing_inter_client %}
+    "vpn.client.routing.inter_client": "true",
+{% else %}
+    "vpn.client.routing.inter_client": "false",
+{% endif %}
+{% if openvpn_as_vpn_client_routing_reroute_dns %}
+    "vpn.client.routing.reroute_dns": "true",
+{% else %}
+    "vpn.client.routing.reroute_dns": "false",
+{% endif %}
+{% if openvpn_as_vpn_client_routing_reroute_gw %}
+    "vpn.client.routing.reroute_gw": "true",
+{% else %}
+    "vpn.client.routing.reroute_gw": "false",
+{% endif %}
+{% if openvpn_as_server_daemon_enable %}
+    "vpn.server.daemon.enable": "true",
+{% else %}
+    "vpn.server.daemon.enable": "false",
+{% endif %}
+    "vpn.server.daemon.tcp.n_daemons": "1",
+    "vpn.server.daemon.udp.n_daemons": "1",
+{% for daemon in openvpn_as_vpn_daemons %}
+    "vpn.daemon.{{ loop.index0 }}.client.netmask_bits": "{{ daemon.client_netmask_bits }}",
+    "vpn.daemon.{{ loop.index0 }}.client.network": "{{ daemon.client_network }}",
+    "vpn.daemon.{{ loop.index0 }}.listen.ip_address": "{{ daemon.listen_ip_address }}",
+    "vpn.daemon.{{ loop.index0 }}.listen.port": "{{ daemon.listen_port }}",
+    "vpn.daemon.{{ loop.index0 }}.listen.protocol": "{{ daemon.listen_protocol }}",
+    "vpn.daemon.{{ loop.index0 }}.server.ip_address": "{{ daemon.server_ip_address }}",
+{% endfor %}
+    "vpn.server.group_pool.0": "172.27.240.0/20",
+    "vpn.server.daemon.tcp.port": "{{ openvpn_as_server_daemon_tcp_port }}",
+    "vpn.server.daemon.udp.port": "{{ openvpn_as_server_daemon_udp_port }}",
+    "vpn.server.port_share.enable": "true",
+    "vpn.server.port_share.ip_address": "1.2.3.4",
+    "vpn.server.port_share.port": "1234",
+    "vpn.server.port_share.service": "admin+client",
+    "vpn.server.routing.private_access": "{{ openvpn_as_server_routing_private_network }}",
+    "vpn.tls_refresh.do_reauth": "true",
+    "vpn.tls_refresh.interval": "360"
+  },
+  "_INTERNAL": {
+    "run_api.active_profile": "Default",
+    "webui.edit_profile": "Default"
+  }
+}

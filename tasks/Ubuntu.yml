@@ -1,0 +1,19 @@
+---
+# tasks file for openvpn_as (Ubuntu specific)
+
+- name: Download OpenVPN AS package
+  become: yes
+  get_url:
+    url: "{{ openvpn_as_url }}"
+    dest: "{{ openvpn_as_download_dir }}/openvpn-as-{{ openvpn_as_version }}.deb"
+    sha256sum: "{{ openvpn_as_sha256sum }}"
+  tags:
+    - openvpn_as
+
+- name: Install OpenVPN AS package
+  become: yes
+  apt:
+    deb: "{{ openvpn_as_download_dir }}/openvpn-as-{{ openvpn_as_version }}.deb"
+    state: present
+  tags:
+    - openvpn_as

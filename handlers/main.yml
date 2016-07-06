@@ -1,2 +1,18 @@
 ---
 # handlers file for openvpn_as
+
+- name: update db
+  become: yes
+  command: ./confdba --load --file=../etc/config_ansible.json
+  args:
+    chdir: /usr/local/openvpn_as/scripts
+  tags:
+    - openvpn_as
+
+- name: restart openvpn_as
+  become: yes
+  service:
+    name: "{{ openvpn_as_service_name }}"
+    state: restarted
+  tags:
+    - openvpn_as

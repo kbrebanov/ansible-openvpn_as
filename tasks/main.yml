@@ -1,2 +1,55 @@
 ---
 # tasks file for openvpn_as
+
+- name: Include distribution specific variables
+  include_vars: "{{ ansible_distribution }}.yml"
+  tags:
+    - openvpn_as
+
+- include: CentOS.yml
+  when: ansible_distribution == "CentOS"
+  tags:
+    - openvpn_as
+
+- include: Ubuntu.yml
+  when: ansible_distribution == "Ubuntu"
+  tags:
+    - openvpn_as
+
+- name: Set password for openvpn user
+  become: yes
+  user:
+    name: openvpn
+    createhome: no
+    home: /home/openvpn
+    shell: /sbin/nologin
+    password: "{{ openvpn_as_password }}"
+    update_password: always
+    system: yes
+    state: present
+  tags:
+    - openvpn_as
+
+- name: Configure OpenVPN Access Server
+  become: yes
+  template:
+    src: config.json.j2
+    dest: /usr/local/openvpn_as/etc/config_ansible.json
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - update db
+    - restart openvpn_as
+  tags:
+    - openvpn_as
+
+- name: Ensure OpenVPN Access Server service is started and enabled on boot
+  become: yes
+  service:
+    name: "{{ openvpn_as_service_name }}"
+    enabled: yes
+    pattern: "{{ openvpn_as_service_name }}"
+    state: started
+  tags:
+    - openvpn_as
