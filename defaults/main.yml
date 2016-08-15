@@ -25,7 +25,7 @@ openvpn_as_cs_tls_version_min: 1.0
 
 openvpn_as_host_name: "{{ ansible_default_ipv4.address }}"
 
-openvpn_as_iptabled_append: false
+openvpn_as_iptables_append: false
 openvpn_as_iptables_web: true
 openvpn_as_iptables_vpn_disable_filter: false
 openvpn_as_iptables_vpn_disable_mangle: false
