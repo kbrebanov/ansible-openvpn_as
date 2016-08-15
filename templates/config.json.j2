@@ -25,6 +25,21 @@
     "cs.ssl_method": "{{ openvpn_as_cs_ssl_method }}",
     "cs.tls_version_min": "{{ openvpn_as_cs_tls_version_min }}",
     "host.name": "{{ openvpn_as_host_name }}",
+{% if openvpn_as_iptables_vpn_disable_filter %}
+    "iptables.vpn.disable.filter": "true",
+{% else %}
+    "iptables.vpn.disable.filter": "false",
+{% endif %}
+{% if openvpn_as_iptables_vpn_disable_mangle %}
+    "iptables.vpn.disable.mangle": "true",
+{% else %}
+    "iptables.vpn.disable.mangle": "false",
+{% endif %}
+{% if openvpn_as_iptables_vpn_disable_nat %}
+    "iptables.vpn.disable.nat": "true",
+{% else %}
+    "iptables.vpn.disable.nat": "false",
+{% endif %}
     "sa.initial_run_groups.0": "web_group",
     "sa.initial_run_groups.1": "openvpn_group",
 {% if openvpn_as_vpn_client_routing_inter_client %}
