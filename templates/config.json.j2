@@ -25,6 +25,11 @@
     "cs.ssl_method": "{{ openvpn_as_cs_ssl_method }}",
     "cs.tls_version_min": "{{ openvpn_as_cs_tls_version_min }}",
     "host.name": "{{ openvpn_as_host_name }}",
+{% if openvpn_as_iptables_append %}
+    "iptables.append": "true",
+{% else %}
+    "iptables.append": "false",
+{% endif %}
 {% if openvpn_as_iptables_vpn_disable_filter %}
     "iptables.vpn.disable.filter": "true",
 {% else %}
