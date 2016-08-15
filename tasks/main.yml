@@ -30,6 +30,19 @@
   tags:
     - openvpn_as
 
+- name: Template OpenVPN Access Server main configuration
+  become: yes
+  template:
+    src: as.conf.j2
+    dest: /usr/local/openvpn_as/etc/as.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart openvpn_as
+  tags:
+    - openvpn_as
+
 - name: Configure OpenVPN Access Server
   become: yes
   template:

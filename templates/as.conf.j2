@@ -1,0 +1,55 @@
+# {{ ansible_managed }}
+
+#DEBUG=false
+{% if openvpn_as_connect %}
+AS_CONNECT=true
+{% else %}
+AS_CONNECT=false
+{% endif %}
+tmp_dir=~/tmp
+lic.dir=~/licenses
+run_start_retry.give_up=60
+run_start_retry.resample=10
+{% if openvpn_as_sa_show_c2s_routes %}
+sa.show_c2s_routes=true
+{% else %}
+sa.show_c2s_routes=false
+{% endif %}
+certs_db=sqlite:///~/db/certs.db
+user_prop_db=sqlite:///~/db/userprop.db
+config_db=sqlite:///~/db/config.db
+log_db=sqlite:///~/db/log.db
+db_retry.interval=1
+db_retry.n_attempts=6
+#db_startup_wait=
+node_type=PRIMARY
+boot_pam_service=openvpnas
+boot_pam_users.0=openvpn
+system_users_local.0=root
+system_users_local.1=openvpn_as
+cs.user=openvpn_as
+cs.group=openvpn_as
+general.sock_dir=~/sock
+#general.openvpn_exe_path=
+sa.win_exe_dir=~/exe
+sa.company_name={{ openvpn_as_sa_company_name }}
+sa.sock=~/sock/sagent
+{% if openvpn_as_cs_auto_generate %}
+cs.auto_generate=true
+{% else %}
+cs.auto_generate=false
+{% endif %}
+cs.ca_bundle=~/web-ssl/ca.crt
+cs.priv_key=~/web-ssl/server.key
+cs.cert=~/web-ssl/server.crt
+cs.dynamic_port_base=870
+sa.initial_run_groups.0=web_group
+sa.reactor=epoll
+sa.unit=0
+{% if openvpn_as_iptables_web %}
+iptables.web=true
+{% else %}
+iptables.web=false
+{% endif %}
+vpn.server.user=openvpn_as
+vpn.server.group=openvpn_as
