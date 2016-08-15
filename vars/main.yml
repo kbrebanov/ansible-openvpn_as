@@ -1,6 +1,5 @@
 ---
 # vars file for openvpn_as
 
-openvpn_as_url: http://swupdate.openvpn.org/as/openvpn-as-{{ openvpn_as_version }}-Ubuntu14.amd_64.deb
 openvpn_as_download_dir: /root
 openvpn_as_service_name: openvpnas

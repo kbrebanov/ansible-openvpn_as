@@ -1,12 +1,23 @@
 ---
 # tasks file for openvpn_as (Ubuntu specific)
 
-- name: Download OpenVPN AS package
+- name: Download OpenVPN AS Ubuntu Trusty package
   become: yes
   get_url:
     url: "{{ openvpn_as_url }}"
     dest: "{{ openvpn_as_download_dir }}/openvpn-as-{{ openvpn_as_version }}.deb"
-    sha256sum: "{{ openvpn_as_sha256sum }}"
+    sha256sum: "{{ openvpn_as_ubuntu_trusty_sha256sum }}"
+  when: ansible_distribution_release == 'trusty'
+  tags:
+    - openvpn_as
+
+- name: Download OpenVPN AS Ubuntu Xenial package
+  become: yes
+  get_url:
+    url: "{{ openvpn_as_url }}"
+    dest: "{{ openvpn_as_download_dir }}/openvpn-as-{{ openvpn_as_version }}.deb"
+    sha256sum: "{{ openvpn_as_ubuntu_xenial_sha256sum }}"
+  when: ansible_distribution_release == 'xenial'
   tags:
     - openvpn_as
 
