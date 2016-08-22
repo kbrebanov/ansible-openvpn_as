@@ -44,6 +44,7 @@ openvpn_as_vpn_daemons:
     server_ip_address: "{{ ansible_default_ipv4.address }}"
 
 openvpn_as_sa_company_name: OpenVPN Technologies, Inc.
+openvpn_as_sa_logo_image_file: ''
 openvpn_as_sa_show_c2s_routes: true
 
 openvpn_as_server_daemon_enable: true

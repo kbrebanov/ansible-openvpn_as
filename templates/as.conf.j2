@@ -33,6 +33,9 @@ general.sock_dir=~/sock
 #general.openvpn_exe_path=
 sa.win_exe_dir=~/exe
 sa.company_name={{ openvpn_as_sa_company_name }}
+{% if openvpn_as_sa_logo_image_file != '' %}
+sa.logo_image_file={{ openvpn_as_sa_logo_image_file }}
+{% endif %}
 sa.sock=~/sock/sagent
 {% if openvpn_as_cs_auto_generate %}
 cs.auto_generate=true
