@@ -8,19 +8,24 @@ openvpn_as_ubuntu_xenial_sha256sum: f00cf38d9fb51beb66ddb9d67b508952d9170b6d94e8
 
 openvpn_as_password: $6$j8B0A1aiU$53BF5A6qO74IDJWTDqgaafnBar1c.LOKK7sdBxwXJY/K/I/XUFAWNsfm78dI9YBDPTHJlmaZoE.QFg.3DEobO1
 
-openvpn_as_admin_ui_https_ip_address: "{{ ansible_default_ipv4.address }}"
+openvpn_as_admin_ui_https_ip_address: "{{ ansible_default_ipv4.interface }}"
 openvpn_as_admin_ui_https_port: 943
-
-openvpn_as_auth_module_type: pam
 
 openvpn_as_connect: true
 
+openvpn_as_cs_admin_only: false
 openvpn_as_cs_auto_generate: true
-openvpn_as_cs_cws_proto_v2: true
-openvpn_as_cs_https_ip_address: "{{ ansible_default_ipv4.address }}"
+openvpn_as_cs_cws_ui_offer_android: true
+openvpn_as_cs_cws_ui_offer_autologin: true
+openvpn_as_cs_cws_ui_offer_ios: true
+openvpn_as_cs_cws_ui_offer_linux: true
+openvpn_as_cs_cws_ui_offer_mac: true
+openvpn_as_cs_cws_ui_offer_server_locked: false
+openvpn_as_cs_cws_ui_offer_user_locked: true
+openvpn_as_cs_cws_ui_offer_win: true
+openvpn_as_cs_https_ip_address: "{{ ansible_default_ipv4.interface }}"
 openvpn_as_cs_https_port: 943
-openvpn_as_cs_prof_sign_web: true
-openvpn_as_cs_ssl_method: SSLv3
+openvpn_as_cs_ssl_reneg: false
 openvpn_as_cs_tls_version_min: 1.0
 
 openvpn_as_host_name: "{{ ansible_default_ipv4.address }}"
@@ -31,23 +36,48 @@ openvpn_as_iptables_vpn_disable_filter: false
 openvpn_as_iptables_vpn_disable_mangle: false
 openvpn_as_iptables_vpn_disable_nat: false
 
+openvpn_as_sa_company_name: OpenVPN Technologies, Inc.
+openvpn_as_sa_logo_image_file: ''
+openvpn_as_sa_show_c2s_routes: true
+openvpn_as_sa_ssl_lib: 'openssl'
+
+openvpn_as_vpn_client_config_directives: []
 openvpn_as_vpn_client_routing_inter_client: false
 openvpn_as_vpn_client_routing_reroute_dns: false
 openvpn_as_vpn_client_routing_reroute_gw: false
+openvpn_as_vpn_client_routing_superuser_c2c_access: false
 
 openvpn_as_vpn_daemons:
   - client_netmask_bits: 20
     client_network: 172.27.224.0
-    listen_ip_address: "{{ ansible_default_ipv4.address }}"
+    listen_ip_address: "{{ ansible_default_ipv4.interface }}"
     listen_port: 443
     listen_protocol: tcp
     server_ip_address: "{{ ansible_default_ipv4.address }}"
 
-openvpn_as_sa_company_name: OpenVPN Technologies, Inc.
-openvpn_as_sa_logo_image_file: ''
-openvpn_as_sa_show_c2s_routes: true
+openvpn_as_vpn_general_osi_layer: 3
 
-openvpn_as_server_daemon_enable: true
-openvpn_as_server_daemon_tcp_port: 943
-openvpn_as_server_daemon_udp_port: 1194
-openvpn_as_server_routing_private_network: nat
+openvpn_as_vpn_server_config_directives: []
+openvpn_as_vpn_server_daemon_enable: true
+openvpn_as_vpn_server_daemon_tcp_port: 943
+openvpn_as_vpn_server_daemon_udp_port: 1194
+openvpn_as_vpn_server_dhcp_option_adapter_domain_suffix: ''
+openvpn_as_vpn_server_dhcp_option_dns_0: ''
+openvpn_as_vpn_server_dhcp_option_dns_1: ''
+openvpn_as_vpn_server_dhcp_option_domains: []
+openvpn_as_vpn_server_duplicate_cn: true
+openvpn_as_vpn_server_google_auth_enable: false
+openvpn_as_vpn_server_group_pool:
+  - 172.27.240.0/20
+openvpn_as_vpn_server_routing_allow_private_nets_to_clients: true
+openvpn_as_vpn_server_routing_gateway_access: true
+openvpn_as_vpn_server_routing_private_access: nat
+openvpn_as_vpn_server_routing_private_networks: []
+openvpn_as_vpn_server_routing_routed_subnets: []
+openvpn_as_vpn_server_static_netmask_bits: 24
+openvpn_as_vpn_server_static_network: ''
+openvpn_as_vpn_server_tls_version_min: default
+
+openvpn_as_vpn_tls_refresh_interval: 360
+
+openvpn_as_xmlrpc_relay_level: 1
