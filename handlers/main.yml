@@ -3,7 +3,7 @@
 
 - name: update db
   become: yes
-  command: ./confdba --load --file=../etc/config_ansible.json
+  command: ./confdba --load --file=../etc/config.json
   args:
     chdir: /usr/local/openvpn_as/scripts
   tags:
