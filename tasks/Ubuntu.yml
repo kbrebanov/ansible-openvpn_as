@@ -25,6 +25,8 @@
   become: yes
   apt:
     deb: "{{ openvpn_as_download_dir }}/openvpn-as-{{ openvpn_as_version }}.deb"
+    dpkg_options: "force-confold,force-confdef,force-downgrade"
+    force: yes
     state: present
   tags:
     - openvpn_as
