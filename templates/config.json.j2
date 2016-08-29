@@ -100,10 +100,10 @@
 {% else %}
     "vpn.client.routing.inter_client": "false",
 {% endif %}
-{% if openvpn_as_vpn_client_routing_reroute_dns %}
-    "vpn.client.routing.reroute_dns": "true",
-{% elif openvpn_as_vpn_client_routing_reroute_dns and (openvpn_as_vpn_server_dhcp_option_dns_0 != '' or openvpn_as_vpn_server_dhcp_option_dns_1 != '') %}
+{% if openvpn_as_vpn_client_routing_reroute_dns and (openvpn_as_vpn_server_dhcp_option_dns_0 != '' or openvpn_as_vpn_server_dhcp_option_dns_1 != '') %}
     "vpn.client.routing.reroute_dns": "custom",
+{% elif openvpn_as_vpn_client_routing_reroute_dns %}
+    "vpn.client.routing.reroute_dns": "true",
 {% else %}
     "vpn.client.routing.reroute_dns": "false",
 {% endif %}
