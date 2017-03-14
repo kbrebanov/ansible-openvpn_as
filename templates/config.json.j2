@@ -6,7 +6,7 @@
     "auth.ldap.0.ssl_verify": "never",
     "auth.ldap.0.timeout": "4",
     "auth.ldap.0.use_ssl": "never",
-    "auth.module.type": "pam",
+    "auth.module.type": "{{ openvpn_as_auth_module_type }}",
     "auth.pam.0.service": "openvpnas",
     "auth.radius.0.acct_enable": "false",
     "auth.radius.0.name": "My Radius servers",
