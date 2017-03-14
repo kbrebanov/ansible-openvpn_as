@@ -11,6 +11,7 @@ openvpn_as_password: $6$j8B0A1aiU$53BF5A6qO74IDJWTDqgaafnBar1c.LOKK7sdBxwXJY/K/I
 openvpn_as_admin_ui_https_ip_address: "{{ ansible_default_ipv4.interface }}"
 openvpn_as_admin_ui_https_port: 943
 
+openvpn_as_auth_module_type: pam
 openvpn_as_connect: true
 
 openvpn_as_cs_admin_only: false
