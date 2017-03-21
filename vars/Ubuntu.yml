@@ -1,4 +1,4 @@
 ---
 # vars file for openvpn_as (Ubuntu specific)
 
-openvpn_as_url: http://swupdate.openvpn.org/as/openvpn-as-{{ openvpn_as_version }}-Ubuntu{{ ansible_distribution_version | truncate(2, True, '') }}.amd_64.deb
+openvpn_as_url: https://swupdate.openvpn.org/as/openvpn-as-{{ openvpn_as_version }}-Ubuntu{{ ansible_distribution_version | truncate(2, True, '', 0) }}.amd_64.deb
