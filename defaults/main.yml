@@ -2,6 +2,7 @@
 # defaults file for openvpn_as
 
 openvpn_as_version: 2.1.2
+openvpn_as_module_type: pam
 
 openvpn_as_ubuntu_trusty_sha256sum: d9d539e7a497ed36a15100a8f24e4fcb42b98581bfc5d79e0bb07b7e4c4a608b
 openvpn_as_ubuntu_xenial_sha256sum: f00cf38d9fb51beb66ddb9d67b508952d9170b6d94e821465a09d58fb14ce475
