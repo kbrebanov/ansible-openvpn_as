@@ -165,7 +165,6 @@
 {% for pool in openvpn_as_vpn_server_group_pool %}
     "vpn.server.group_pool.{{ loop.index0 }}": "{{ pool }}",
 {% endfor %}
-    "vpn.server.group_pool.0": "172.27.240.0/20",
     "vpn.server.port_share.enable": "true",
     "vpn.server.port_share.ip_address": "1.2.3.4",
     "vpn.server.port_share.port": "1234",
