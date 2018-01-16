@@ -42,9 +42,15 @@ cs.auto_generate=true
 {% else %}
 cs.auto_generate=false
 {% endif %}
+{% if openvpn_as_custom_cert %}
+cs.ca_bundle={{ openvpn_as_ca_bundle }}
+cs.priv_key={{ openvpn_as_ca_priv_key }}
+cs.cert={{ openvpn_as_ca_cert }}
+{% else %}
 cs.ca_bundle=~/web-ssl/ca.crt
 cs.priv_key=~/web-ssl/server.key
 cs.cert=~/web-ssl/server.crt
+{% endif %}
 cs.dynamic_port_base=870
 sa.initial_run_groups.0=web_group
 sa.reactor=epoll

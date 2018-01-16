@@ -9,7 +9,7 @@
         "auth.ldap.0.use_ssl": "{{ openvpn_as_ldap_use_ssl }}",
         "auth.ldap.0.server.0.host": "{{ openvpn_as_ldap_server_host }}",
         "auth.ldap.0.bind_dn": "{{ openvpn_as_ldap_bind_dn }}",
-        "auth.ldap.0.bind_pw: "{{ openvpn_as_ldap_bind_pw }}",
+        "auth.ldap.0.bind_pw": "{{ openvpn_as_ldap_bind_pw }}",
         "auth.ldap.0.name": "{{ openvpn_as_ldap_name }}",
         "auth.ldap.0.users_base_dn": "{{ openvpn_as_users_base_dn }}",
         "auth.ldap.0.uname_attr": "{{ openvpn_as_uname_attr }}",
@@ -17,7 +17,7 @@
     {% endif %}
     "auth.pam.0.service": "openvpnas",
     "auth.radius.0.acct_enable": "false",
-    "auth.radius.0.name": "My Radius servers"
+    "auth.radius.0.name": "My Radius servers",
 {% if openvpn_as_cs_admin_only %}
     "cs.admin_only": "true",
 {% else %}
@@ -173,7 +173,6 @@
 {% for pool in openvpn_as_vpn_server_group_pool %}
     "vpn.server.group_pool.{{ loop.index0 }}": "{{ pool }}",
 {% endfor %}
-    "vpn.server.group_pool.0": "172.27.240.0/20",
     "vpn.server.port_share.enable": "true",
     "vpn.server.port_share.ip_address": "1.2.3.4",
     "vpn.server.port_share.port": "1234",
