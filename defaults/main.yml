@@ -11,6 +11,13 @@ openvpn_as_password: $6$j8B0A1aiU$53BF5A6qO74IDJWTDqgaafnBar1c.LOKK7sdBxwXJY/K/I
 openvpn_as_admin_ui_https_ip_address: "{{ ansible_default_ipv4.interface }}"
 openvpn_as_admin_ui_https_port: 943
 
+openvpn_as_auth_ldap_host: "My LDAP servers"
+openvpn_as_auth_ldap_use_ssl: "never"
+openvpn_as_auth_ldap_uname_attr: "sAMAccountName"
+openvpn_as_auth_ldap_users_base_dn: "CN=Users, DC=example, DC=net"
+
+openvpn_as_auth_module_type: "pam"
+
 openvpn_as_connect: true
 
 openvpn_as_cs_admin_only: false
@@ -59,7 +66,7 @@ openvpn_as_vpn_general_osi_layer: 3
 
 openvpn_as_vpn_server_config_directives: []
 openvpn_as_vpn_server_daemon_enable: true
-openvpn_as_vpn_server_daemon_tcp_port: 943
+openvpn_as_vpn_server_daemon_tcp_port: 1194
 openvpn_as_vpn_server_daemon_udp_port: 1194
 openvpn_as_vpn_server_dhcp_option_adapter_domain_suffix: ''
 openvpn_as_vpn_server_dhcp_option_dns_0: ''
@@ -76,6 +83,7 @@ openvpn_as_vpn_server_routing_private_networks: []
 openvpn_as_vpn_server_routing_routed_subnets: []
 openvpn_as_vpn_server_static_netmask_bits: 24
 openvpn_as_vpn_server_static_network: ''
+openvpn_as_vpn_server_tls_auth: true
 openvpn_as_vpn_server_tls_version_min: default
 
 openvpn_as_vpn_tls_refresh_interval: 360

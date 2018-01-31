@@ -2,11 +2,18 @@
   "Default": {
     "admin_ui.https.ip_address": "{{ openvpn_as_admin_ui_https_ip_address }}",
     "admin_ui.https.port": "{{ openvpn_as_admin_ui_https_port }}",
-    "auth.ldap.0.name": "My LDAP servers",
+    "auth.ldap.0.name": "{{ openvpn_as_auth_ldap_host }}",
     "auth.ldap.0.ssl_verify": "never",
     "auth.ldap.0.timeout": "4",
-    "auth.ldap.0.use_ssl": "never",
-    "auth.module.type": "pam",
+    "auth.ldap.0.use_ssl": "{{ openvpn_as_auth_ldap_use_ssl }}",
+    "auth.ldap.0.server.0.host": "{{ openvpn_as_auth_ldap_host }}",
+    "auth.ldap.0.uname_attr": "{{ openvpn_as_auth_ldap_uname_attr }}",
+    "auth.ldap.0.users_base_dn": "{{ openvpn_as_auth_ldap_users_base_dn }}",
+{% if openvpn_as_auth_ldap_bind_dn %}
+    "auth.ldap.0.bind_dn": "{{ openvpn_as_auth_ldap_bind_dn }}",
+    "auth.ldap.0.bind_pw": "{{ openvpn_as_auth_ldap_bind_pw }}",
+{% endif %}
+    "auth.module.type": "{{ openvpn_as_auth_module_type }}",
     "auth.pam.0.service": "openvpnas",
     "auth.radius.0.acct_enable": "false",
     "auth.radius.0.name": "My Radius servers",
@@ -185,6 +192,11 @@
 {% if openvpn_as_vpn_server_static_network != '' %}
     "vpn.server.static.0.netmask_bits": "{{ openvpn_as_vpn_server_static_netmask_bits }}",
     "vpn.server.static.0.network": "{{ openvpn_as_vpn_server_static_network }}",
+{% endif %}
+{% if openvpn_as_vpn_server_tls_auth %}
+    "vpn.server.tls_auth": "true",
+{% else %}
+    "vpn.server.tls_auth": "false",
 {% endif %}
     "vpn.server.tls_version_min": "{{ openvpn_as_vpn_server_tls_version_min }}",
     "vpn.tls_refresh.do_reauth": "true",
