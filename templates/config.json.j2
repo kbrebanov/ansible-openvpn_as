@@ -9,6 +9,10 @@
     "auth.ldap.0.server.0.host": "{{ openvpn_as_auth_ldap_host }}",
     "auth.ldap.0.uname_attr": "{{ openvpn_as_auth_ldap_uname_attr }}",
     "auth.ldap.0.users_base_dn": "{{ openvpn_as_auth_ldap_users_base_dn }}",
+{% if openvpn_as_auth_ldap_bind_dn %}
+    "auth.ldap.0.bind_dn": "{{ openvpn_as_auth_ldap_bind_dn }}",
+    "auth.ldap.0.bind_pw": "{{ openvpn_as_auth_ldap_bind_pw }}",
+{% endif %}
     "auth.module.type": "{{ openvpn_as_auth_module_type }}",
     "auth.pam.0.service": "openvpnas",
     "auth.radius.0.acct_enable": "false",
