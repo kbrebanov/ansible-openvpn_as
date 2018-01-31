@@ -193,6 +193,11 @@
     "vpn.server.static.0.netmask_bits": "{{ openvpn_as_vpn_server_static_netmask_bits }}",
     "vpn.server.static.0.network": "{{ openvpn_as_vpn_server_static_network }}",
 {% endif %}
+{% if openvpn_as_vpn_server_tls_auth %}
+    "vpn.server.tls_auth": "true",
+{% else %}
+    "vpn.server.tls_auth": "false",
+{% endif %}
     "vpn.server.tls_version_min": "{{ openvpn_as_vpn_server_tls_version_min }}",
     "vpn.tls_refresh.do_reauth": "true",
     "vpn.tls_refresh.interval": "{{ openvpn_as_vpn_tls_refresh_interval }}",
