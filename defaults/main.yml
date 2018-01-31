@@ -66,7 +66,7 @@ openvpn_as_vpn_general_osi_layer: 3
 
 openvpn_as_vpn_server_config_directives: []
 openvpn_as_vpn_server_daemon_enable: true
-openvpn_as_vpn_server_daemon_tcp_port: 943
+openvpn_as_vpn_server_daemon_tcp_port: 1194
 openvpn_as_vpn_server_daemon_udp_port: 1194
 openvpn_as_vpn_server_dhcp_option_adapter_domain_suffix: ''
 openvpn_as_vpn_server_dhcp_option_dns_0: ''
